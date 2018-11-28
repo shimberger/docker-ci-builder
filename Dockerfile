@@ -33,10 +33,6 @@ RUN  /bin/bash -c  "\
 	echo 'oracle-java8-installer shared/accepted-oracle-license-v1-1 seen true' | debconf-set-selections && \
 	apt-get install -y oracle-java8-installer oracle-java8-set-default && apt-get clean"
 
-# Install PhantomJS
-# RUN /bin/bash -c  "\
-# mkdir /opt/phantomjs && cd /opt/phantomjs && curl https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 | tar -xj && ln -s /opt/phantomjs/bin/phantomjs /usr/local/bin"
-
 # Install PHP
 RUN /bin/bash -c  "\
  	apt-get update && apt-get install -y php7.2-cli php7.2-json php7.2 php7.2-zip php7.2-pdo-mysql php7.2-pdo-pgsql php7.2-pdo-sqlite php7.2-simplexml php7.2-mysqli php7.2-mysqlnd php7.2-mbstring php7.2-mysql php7.2-ldap php7.2-gettext php7.2-curl php7.2-bcmath php7.2-bz2 php7.2-iconv php7.2-imap && \
@@ -59,6 +55,9 @@ ENV NODE_ZIP="node-v$NODE_VERSION-linux-x64.tar.xz"
 RUN wget -P downloads https://nodejs.org/dist/v$NODE_VERSION/$NODE_ZIP && \
     tar -C /usr/local --strip-components 1 -xJf downloads/$NODE_ZIP && \
     rm -rf downloads
+
+# Install Pupeteer
+RUN /bin/bash -c  "sudo npm -g i puppeteer"
 
 # Install golang
 ENV GO_VERSION="1.11.1"
