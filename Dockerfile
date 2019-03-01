@@ -60,7 +60,7 @@ RUN wget -P downloads https://nodejs.org/dist/v$NODE_VERSION/$NODE_ZIP && \
 RUN /bin/bash -c  "sudo npm -g i puppeteer"
 
 # Install golang
-ENV GO_VERSION="1.11.1"
+ENV GO_VERSION="1.12"
 ENV GO_TAR="go$GO_VERSION.linux-amd64.tar.gz"
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
