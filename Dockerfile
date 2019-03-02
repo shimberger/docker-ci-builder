@@ -50,14 +50,14 @@ RUN /bin/bash -c  "\
 	apt-get update && apt-get install -y mysql-server && apt-get clean"
 
 # Install node
-ENV NODE_VERSION="10.13.0"
+ENV NODE_VERSION="10.15.2"
 ENV NODE_ZIP="node-v$NODE_VERSION-linux-x64.tar.xz"
 RUN wget -P downloads https://nodejs.org/dist/v$NODE_VERSION/$NODE_ZIP && \
     tar -C /usr/local --strip-components 1 -xJf downloads/$NODE_ZIP && \
     rm -rf downloads
 
 # Install Pupeteer
-RUN /bin/bash -c  "sudo npm -g i puppeteer"
+RUN /bin/bash -c  "sudo npm -g i puppeteer --unsafe-perm=true"
 
 # Install golang
 ENV GO_VERSION="1.12"
